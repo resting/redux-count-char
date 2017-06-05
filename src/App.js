@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './App.css';
@@ -7,9 +6,16 @@ import {
   Grid, Row, Col, FormGroup, FormControl, Button
 } from 'react-bootstrap';
 
-class App extends Component {
-  handleClick() {
+import { countChar } from './actions';
+import { connect } from 'react-redux';
 
+class App extends Component {
+  constructor (props) {
+    super(props);
+
+    this.sourcetext = '';
+  }
+  handleClick() {
   }
   render() {
     return (
@@ -28,9 +34,9 @@ class App extends Component {
             <Col md={12}>
               <h2>1. Paste some text</h2>
               <FormGroup>
-                <FormControl componentClass="textarea" placeholder="Paste text here..." style={{height: 300}}></FormControl>
+                <FormControl componentClass="textarea" placeholder="Paste text here..." style={{height: 300}} inputRef={input=>{this.sourcetext = input}}></FormControl>
               </FormGroup>
-              <Button bsStyle="primary" style={{width:'100%', fontSize:'2em'}}>Count</Button>
+              <Button bsStyle="primary" style={{width:'100%', fontSize:'2em'}} onClick={this.handleClick.bind(this)}>Count</Button>
             </Col>
           </Row>
         </Grid>
@@ -51,4 +57,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {};
+}
+
+export default connect(null, mapDispatchToProps)(App);
