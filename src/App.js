@@ -58,7 +58,11 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    doCount: (text) => {
+      dispatch(countChar(text))
+    }
+  };
 }
 
 export default connect(null, mapDispatchToProps)(App);
