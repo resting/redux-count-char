@@ -16,6 +16,8 @@ class App extends Component {
     this.sourcetext = '';
   }
   handleClick() {
+    const { doCount } = this.props;
+    doCount(this.sourcetext.value);
   }
   render() {
     return (
