@@ -49,7 +49,7 @@ class App extends Component {
           <Row>
             <Col md={12}>
               <h2>2. Result</h2>
-              <h3>Total characters found: </h3>
+              <h3>Total characters found: {this.props.totalChar}</h3>
             </Col>
           </Row>
         </Grid>
@@ -67,4 +67,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 }
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = (state) => {
+  return {
+    totalChar: state.countResult.totalChar
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
