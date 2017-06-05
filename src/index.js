@@ -6,8 +6,9 @@ import './index.css';
 
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { appReducers } from './reducers'
 
-let store = createStore(()=>{})
+let store = createStore(appReducers);
 
 ReactDOM.render(
   <Provider store={store}>
